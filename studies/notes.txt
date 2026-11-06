@@ -1,0 +1,34 @@
+Mutex = MUTual EXclusion
+Se eu estou usando, ninguém mais usa. Uso único.
+
+O Mutex é importante no momento de realizar tarefas e execução de regras de negócio.
+
+A CPU faz 3 passos por vez, se uma thread fizer a mesma execução simultânea com a outra, a CPU não irá registrar ambas as execuções.
+
+data race = pode acontecer as vezes.
+Depende de como o sistema operacionar intercala as threads
+Com o Mutex, evitamos data race.
+
+O Mutex protede os dados da struct para que não existam inconsistências.
+-----------------------------------------------
+
+#include <pthread.h>
+pthread_t - por debaixo dos panos é um unsigned long int
+
+Mesmo declaradas e armazenadas na stack, ela pode causar leak de memória se não for finalizada. Atenção!
+
+Função pthread_create()
+
+Instrui o SO a reservar um bloco de memória na stack e iniciar uma execução independente no processador.
+
+Para uma thread ser criada e poder ser controlada, ela precisa ter 4 informações, que são passadas por parâmetros durante a criação
+
+1 - O endereço da thread para que ela possa receber alterações.
+
+2 - um ponteiro para uma struct de configurações com funções/instrução de mudança do tamanho da stack que a thread vai usar. Ao passar NULL, o sistema vai usar a configuração padrão:
+- aloca 8MB, que é o mínimo de bytes para a existência de uma thread
+- estado joinable: Que define que a thread nasce dependente. O SO trava a limpesa dessa trhead na memória até que a função pthread_join seja chamada.
+
+3 - Endereço da função que vai ditar a regra de negócio que aquela thread faz. É preciso que o retorno da função seja void*, um ponteiro genérico, pois o argumento pede isso. 
+
+4 - Argumentos(informações) que a função do argumento 3 vai usar. Castateando para o pthread_create() ter essas informações.
