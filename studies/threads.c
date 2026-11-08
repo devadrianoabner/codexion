@@ -50,6 +50,15 @@ typedef struct s_system
 	t_coder			*coders;
 }	t_system;
 
+void	*coder_routine(void *payload)
+{
+	t_coder *coder;
+
+	coder = (t_coder *) payload;
+	printf("Coder %d acordou e sabe que seu dongle esquerdo é o %d.\n", coder->id, coder->dongle_1->id);
+	
+	return (NULL);
+}
 
 int main(void)
 {
@@ -77,12 +86,16 @@ int main(void)
 
 	while (i < sys.num_coders)
 	{
+		// 1. Identidade e configuração básica
 		sys.coders[i].id = i + 1;
 		sys.dongles[i].id = i + 1;
+		// 2. Entrega das ferramentas (nossas linhas circulares)
+		sys.coders[i].dongle_1 = &sys.dongles[i];
+		sys.coders[i].dongle_2 = &sys.dongles[(i + 1) % sys.num_coders];
 
+		// 3. Instalação das fechaduras (Mutexes)
 		pthread_mutex_init(&sys.dongles[i].lock, NULL);
 		pthread_cond_init(&sys.dongles[i].cond, NULL);
-
 		pthread_mutex_init(&sys.coders[i].coder_lock, NULL);
 		
 		i++;
