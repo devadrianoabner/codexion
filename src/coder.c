@@ -6,7 +6,7 @@
 /*   By: adrianda <adrianda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/13 17:41:26 by adrianda          #+#    #+#             */
-/*   Updated: 2026/11/13 17:41:27 by adrianda         ###   ########.fr       */
+/*   Updated: 2026/11/13 19:39:06 by adrianda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ void	*coder_routine(void *payload)
 	t_coder	*coder;
 
 	coder = (t_coder *)payload;
+	if (coder->id % 2 == 0)
+		usleep(coder->sys->time_to_compile * 500);
 	while (!check_stop(coder->sys))
 	{
 		take_dongles(coder);

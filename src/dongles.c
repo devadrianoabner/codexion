@@ -6,7 +6,7 @@
 /*   By: adrianda <adrianda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/13 17:41:21 by adrianda          #+#    #+#             */
-/*   Updated: 2026/11/13 17:42:07 by adrianda         ###   ########.fr       */
+/*   Updated: 2026/11/13 19:49:54 by adrianda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@ int	try_take(t_coder *coder)
 	int			ok;
 
 	order_dongles(coder, &first, &second);
+	if (first == second)
+		return (0);
 	pthread_mutex_lock(&first->lock);
 	pthread_mutex_lock(&second->lock);
 	ok = dongle_ready(coder, first) && dongle_ready(coder, second);
