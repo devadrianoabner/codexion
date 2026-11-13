@@ -6,7 +6,7 @@
 /*   By: adrianda <adrianda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/12 21:38:09 by adrianda          #+#    #+#             */
-/*   Updated: 2026/11/12 21:46:24 by adrianda         ###   ########.fr       */
+/*   Updated: 2026/11/12 22:12:01 by adrianda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,6 @@ typedef struct s_system
 	pthread_t		monitoring_thread;
 }					t_system;
 
-
 /* utils */
 void		*ft_calloc(size_t nmemb, size_t size);
 long long	get_time(void);
@@ -116,6 +115,6 @@ int			start_threads(t_system *sys);
 void		stop_threads(t_system *sys);
 void		init_values(t_system *sys);
 void		init_coders(t_system *sys);
-	int		init_system(t_system *sys);
+int			init_system(t_system *sys);
 
 #endif
