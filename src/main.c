@@ -6,7 +6,7 @@
 /*   By: adrianda <adrianda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/13 17:41:31 by adrianda          #+#    #+#             */
-/*   Updated: 2026/11/13 17:41:32 by adrianda         ###   ########.fr       */
+/*   Updated: 2026/11/13 17:48:06 by adrianda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,14 @@ void	stop_threads(t_system *sys)
 	}
 }
 
-int	main(void)
+int	main(int argc, char **argv)
 {
 	t_system	sys;
 
-	init_values(&sys);
+	if (validate_args(argc, argv))
+		return (1);
+	parse_args(&sys, argv);
+	sys.start_time = get_time();
 	if (init_system(&sys))
 		return (1);
 	start_threads(&sys);

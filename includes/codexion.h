@@ -6,7 +6,7 @@
 /*   By: adrianda <adrianda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/12 21:38:09 by adrianda          #+#    #+#             */
-/*   Updated: 2026/11/12 22:12:01 by adrianda         ###   ########.fr       */
+/*   Updated: 2026/11/13 17:47:22 by adrianda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,8 +113,10 @@ void		*coder_routine(void *payload);
 /* main */
 int			start_threads(t_system *sys);
 void		stop_threads(t_system *sys);
-void		init_values(t_system *sys);
 void		init_coders(t_system *sys);
 int			init_system(t_system *sys);
 
+/* parser */
+int			validate_args(int argc, char **argv);
+int			parse_args(t_system *sys, char **argv);
 #endif
