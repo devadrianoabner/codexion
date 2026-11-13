@@ -6,7 +6,7 @@
 #    By: adrianda <adrianda@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/11/13 17:41:51 by adrianda          #+#    #+#              #
-#    Updated: 2026/11/13 17:41:52 by adrianda         ###   ########.fr        #
+#    Updated: 2026/11/13 17:50:27 by adrianda         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,9 @@ SRCS		= $(SRC_DIR)/main.c \
 			  $(SRC_DIR)/monitor.c \
 			  $(SRC_DIR)/dongles.c \
 			  $(SRC_DIR)/release.c \
-			  $(SRC_DIR)/coder.c
+			  $(SRC_DIR)/coder.c \
+			  $(SRC_DIR)/parse.c \
+			  $(SRC_DIR)/validate.c
 
 OBJS		= $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 
