@@ -1,18 +1,16 @@
-#include "codexion.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   init.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: adrianda <adrianda@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/11/13 17:41:16 by adrianda          #+#    #+#             */
+/*   Updated: 2026/11/13 17:42:17 by adrianda         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-void	init_values(t_system *sys)
-{
-	sys->num_coders = 5;
-	sys->time_to_burnout = 800;
-	sys->time_to_compile = 200;
-	sys->time_to_debug = 100;
-	sys->time_to_refactor = 100;
-	sys->dongle_cooldown = 50;
-	sys->number_of_compiles_required = 7;
-	sys->stop = 0;
-	sys->scheduler = "fifo";
-	sys->start_time = get_time();
-}
+#include "codexion.h"
 
 void	init_coders(t_system *sys)
 {
