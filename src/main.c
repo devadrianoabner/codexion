@@ -6,7 +6,7 @@
 /*   By: adrianda <adrianda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/13 17:41:31 by adrianda          #+#    #+#             */
-/*   Updated: 2026/11/13 17:48:06 by adrianda         ###   ########.fr       */
+/*   Updated: 2026/11/13 20:58:42 by adrianda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ int	start_threads(t_system *sys)
 			&coder_routine, &sys->coders[i]);
 		i++;
 	}
-	pthread_create(&sys->monitoring_thread, NULL, &monitor_routine, sys);
+	if (pthread_create(&sys->monitoring_thread, NULL, &monitor_routine, sys))
+		return (1);
 	return (0);
 }
 
@@ -49,8 +50,10 @@ int	main(int argc, char **argv)
 	sys.start_time = get_time();
 	if (init_system(&sys))
 		return (1);
-	start_threads(&sys);
+	if (start_threads(&sys))
+		return (1);
 	stop_threads(&sys);
 	pthread_join(sys.monitoring_thread, NULL);
+	destroy_system(&sys);
 	return (0);
 }

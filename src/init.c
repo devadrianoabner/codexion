@@ -6,11 +6,29 @@
 /*   By: adrianda <adrianda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/13 17:41:16 by adrianda          #+#    #+#             */
-/*   Updated: 2026/11/13 17:42:17 by adrianda         ###   ########.fr       */
+/*   Updated: 2026/11/13 20:48:50 by adrianda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "codexion.h"
+
+void	destroy_system(t_system *sys)
+{
+	int	i;
+
+	i = 0;
+	while (i < sys->num_coders)
+	{
+		pthread_mutex_destroy(&sys->dongles[i].lock);
+		pthread_cond_destroy(&sys->dongles[i].cond);
+		pthread_mutex_destroy(&sys->coders[i].coder_lock);
+		i++;
+	}
+	pthread_mutex_destroy(&sys->stop_lock);
+	pthread_mutex_destroy(&sys->print_lock);
+	free(sys->dongles);
+	free(sys->coders);
+}
 
 void	init_coders(t_system *sys)
 {

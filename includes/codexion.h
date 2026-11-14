@@ -6,7 +6,7 @@
 /*   By: adrianda <adrianda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/12 21:38:09 by adrianda          #+#    #+#             */
-/*   Updated: 2026/11/13 17:47:22 by adrianda         ###   ########.fr       */
+/*   Updated: 2026/11/13 20:49:45 by adrianda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,4 +119,7 @@ int			init_system(t_system *sys);
 /* parser */
 int			validate_args(int argc, char **argv);
 int			parse_args(t_system *sys, char **argv);
+
+/* destroy */
+void	destroy_system(t_system *sys);
 #endif

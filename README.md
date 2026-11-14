@@ -49,3 +49,5 @@ Expected: no leaks, no data races, no lock-order warnings.
 ./codexion 5 800 abc 200 200 5 0 fifo
 ./codexion 5 800 200 200 200 5 0 lifo
 ./codexion 5 800 200 200
+
+valgrind --tool=helgrind ./codexion 5 5000 200 200 200 3 0 fifo 2>&1 | tail -20
