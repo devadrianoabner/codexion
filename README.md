@@ -1,3 +1,32 @@
+*This project has been created as part of the 42 curriculum by <adrianda>.*
+
+## Description
+
+Codexion is a concurrency simulation written in C. Several coders sit
+around a table and share USB dongles, one between each pair of coders.
+A coder needs two dongles to compile, then debugs, then refactors, and
+must compile again before time_to_burnout runs out. The program uses
+POSIX threads and mutexes, a per-dongle priority queue (fifo or edf),
+a dongle cooldown and a monitor thread that detects burnout.
+
+## Instructions
+
+Compile:
+
+    make
+
+Run:
+
+    ./codexion number_of_coders time_to_burnout time_to_compile \
+    time_to_debug time_to_refactor number_of_compiles_required \
+    dongle_cooldown scheduler
+
+Example:
+
+    ./codexion 5 2000 200 200 200 8 0 fifo
+
+The scheduler must be `fifo` or `edf`.
+
 ## Tests
 
 Arguments order: number_of_coders time_to_burnout time_to_compile
